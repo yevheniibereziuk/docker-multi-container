@@ -1,0 +1,8 @@
+FROM node:16-alpine3.18
+WORKDIR '/complex'
+COPY ./package.json ./
+RUN npm install
+COPY . .
+RUN chown -R node:node /complex/node_modules
+USER node
+CMD [ "npm", "run", "start" ]
